@@ -84,55 +84,7 @@ fmt.Println(result.Address)
 // Output: XVfC9CTCJh6GN2x8bnrw3LtdbqiVCUFyQVMzRrMGUZpokKH
 ```
 
-## API
-
-### `EncodeAddressToXAddress`
-
-Converts a classic XRP address and destination tag to X-Address format.
-
-```go
-func EncodeAddressToXAddress(ctx context.Context, address, tag string, isTestnet bool) (*EncodedAddressResponse, error)
-```
-
-**Parameters:**
-- `ctx`: Context for cancellation control
-- `address`: Classic XRP address (r-address format)
-- `tag`: Destination tag as decimal string (use "" for no tag)
-- `isTestnet`: `true` for testnet, `false` for mainnet
-
-**Returns:**
-- `*EncodedAddressResponse`: Contains the generated X-Address
-- `error`: Error if conversion fails
-
-### `DecodeXAddressToAddress`
-
-Converts an X-Address back to classic address and destination tag.
-
-```go
-func DecodeXAddressToAddress(ctx context.Context, xAddress string) (*DecodedAddressResponse, error)
-```
-
-**Parameters:**
-- `ctx`: Context for cancellation control
-- `xAddress`: The X-Address to decode
-
-**Returns:**
-- `*DecodedAddressResponse`: Contains the classic address, tag, and testnet flag
-- `error`: Error if decoding fails
-
-## Types
-
-```go
-type EncodedAddressResponse struct {
-    Address string `json:"address"`
-}
-
-type DecodedAddressResponse struct {
-    Account string `json:"account"` // Classic address
-    Tag     string `json:"tag"`     // Tag (empty if none)
-    Test    bool   `json:"test"`    // true if testnet
-}
-```
+For detailed API documentation, see the [package documentation](https://pkg.go.dev/github.com/guimuniz/xrp-xaddress-converter/xaddress).
 
 ## Development
 
