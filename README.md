@@ -162,6 +162,38 @@ make build
 
 Contributions are welcome! Feel free to open issues or pull requests.
 
+## Releasing a New Version
+
+To publish a new version of this library:
+
+1. Create a release branch from `develop`:
+   ```bash
+   git checkout develop
+   git pull origin develop
+   git checkout -b release/vX.Y.Z
+   ```
+2. Update the `CHANGELOG.md` with the new version and changes
+3. Commit your changes:
+   ```bash
+   git add CHANGELOG.md
+   git commit -m "chore: prepare release vX.Y.Z"
+   git push origin release/vX.Y.Z
+   ```
+4. Open a pull request from `release/vX.Y.Z` to `master`
+5. After PR approval and merge, create and push the version tag:
+   ```bash
+   git checkout master
+   git pull origin master
+   git tag -a vX.Y.Z -m "Release vX.Y.Z: Brief description"
+   git push origin vX.Y.Z
+   ```
+6. The module will be automatically indexed by pkg.go.dev
+
+Users can then install the specific version:
+```bash
+go get github.com/guimuniz/xrp-xaddress-converter@vX.Y.Z
+```
+
 ## License
 
 MIT License - see the [LICENSE](LICENSE) file for details.
